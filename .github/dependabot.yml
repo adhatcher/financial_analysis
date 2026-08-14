@@ -5,8 +5,19 @@ updates:
     schedule:
       interval: "daily"
     open-pull-requests-limit: 10
+    groups:
+      # One PR per cycle per ecosystem. Every member of this group rewrites the
+      # same resolved dependency set, so ungrouped updates conflict with each
+      # other as soon as any one of them merges.
+      python-dependencies:
+        patterns:
+          - "*"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
     open-pull-requests-limit: 10
+    groups:
+      github-actions:
+        patterns:
+          - "*"
